@@ -19,6 +19,32 @@ function App() {
   return (
     <div className="App">
       
+        <div className="app_status">
+          <InfoBoxes
+          isBlue
+          active={casesType==="cases"}
+            onClick={(e) => setCasesType("cases")}
+            title="Coronavirus Cases"
+            cases={prettyPrintStat(countryInfo.todayCases)}
+            total={numeral(countryInfo.cases).format("0.0a")}
+          />
+          <InfoBoxes
+          isGreen
+           active={casesType==="recovered"}
+            onClick={(e) => setCasesType("recovered")}
+            title="Recovered"
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            total={numeral(countryInfo.recovered).format("0.0a")}
+          />
+          <InfoBoxes
+          isRed
+           active={casesType==="deaths"}
+            onClick={(e) => setCasesType("deaths")}
+            title=" Deaths"
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            total={numeral(countryInfo.deaths).format("0.0a")}
+          />
+        </div>
     </div>
   );
 }
