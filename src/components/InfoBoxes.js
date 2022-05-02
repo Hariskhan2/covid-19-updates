@@ -1,13 +1,16 @@
 import React from "react";
+import "./InfoBox.css";
 import { Card, CardContent, Typography } from "@mui/material";
 function InfoBoxes(props) {
-  console.log(props);
   return (
-    <Card>
+    <Card
+      onClick={props.onClick}
+      className={`infoBox  ${props.active && "infoBox--selected"} ${
+        props.isRed && "infoBox_Red"
+      } ${props.isBlue && "infoBox_Blue"}`}
+    >
       <CardContent>
-        <Typography className='infoBox_title' color="textSecondary">{props.title}</Typography>
-        <h2 className='infoBox_cases'>{props.cases}</h2>
-        <Typography className='infoBox_total' color='textSecondary'>{props.total} Total</Typography>
+        <Typography className="infoBox_title" color="textSecondary">
           {props.title}
         </Typography>
         <h2
