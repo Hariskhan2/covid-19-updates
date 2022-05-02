@@ -45,6 +45,21 @@ function App() {
             total={numeral(countryInfo.deaths).format("0.0a")}
           />
         </div>
+
+        <Map
+          casesType={casesType}
+          countries={mapCountries}
+          center={mapCenter}
+          zoom={mapZoom}
+        />
+      </div>
+      <Card className="app_right">
+        <CardContent>
+          <h3>Live cases in country</h3>
+          <Table countries={tableData} />
+          <h3 className="app_graphTitle">Worldwide new {casesType}</h3>
+        </CardContent>
+      </Card>
     </div>
   );
 }
