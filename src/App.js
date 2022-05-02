@@ -10,6 +10,10 @@ function App() {
             name: country.country, //UnitedStates,United Kindom
             value: country.countryInfo.iso3, //USA,UK
           }));
+          let sortedData = sortData(data);
+
+          setTableData(sortedData);
+          setMapCountries(data);
           setCountries(countries);
         });
     };
