@@ -16,9 +16,28 @@ function App() {
 
     getCountriesData();
   }, []);
+  const onCountryChange = async (event) => {
+    const countryCode = event.target.value;
+
+    //fetching data for the cards
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
+      });
+  };
+  // console.log(countryInfo);
   return (
-    <div className="App">
-      
+    <div className="app">
+      <div className="app_left">
+        <div className="app_header">
         <Typical
         steps={['COVID-19', 1000, 'COVID-19 TRACKER', 500,'CORONA PANDAMIC TRACKER ', 500]}
         loop={Infinity}
