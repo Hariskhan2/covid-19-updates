@@ -1,14 +1,24 @@
 
 import './App.css';
 
-function App() {
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []); //[] because we fetch data from an api as an object but these brackets use to make it an array
+  useEffect(() => {
+    //the code inside this component will run once
+    //when the component loads and not again
+    //async =send a request ,wait for it ,do something with it
     const getCountriesData = async () => {
-      await fetch("https://disease.sh/v3/covid-19/countries")
+      fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
           const countries = data.map((country) => ({
             name: country.country, //UnitedStates,United Kindom
-            value: country.countryInfo.iso3, //USA,UK
+            value: country.countryInfo.iso2, //USA,UK
           }));
           let sortedData = sortData(data);
 
