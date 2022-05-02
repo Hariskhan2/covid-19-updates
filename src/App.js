@@ -19,6 +19,13 @@ function App() {
   return (
     <div className="App">
       
+        <Typical
+        steps={['COVID-19', 1000, 'COVID-19 TRACKER', 500,'CORONA PANDAMIC TRACKER ', 500]}
+        loop={Infinity}
+        wrapper="h1"
+        className="heading"
+     
+      />
         <div className="app_status">
           <InfoBoxes
           isBlue
