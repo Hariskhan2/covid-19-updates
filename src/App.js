@@ -1,5 +1,33 @@
+import React, { useEffect, useState } from "react";
+import {
+  FormControl,
+  MenuItem,
+  Select,
+  Card,
+  CardContent,
+} from "@mui/material";
+import "./components/InfoBox.css";
+import numeral from "numeral";
+import InfoBoxes from "./components/InfoBoxes.js";
+import Map from "./components/Map.js";
+import Table from "./components/Table.js";
+import Typical from 'react-typical'
+import LineGraph from "./components/LineGraph.js";
+import { sortData, prettyPrintStat } from "./util";
+import "./App.css";
+import "leaflet/dist/leaflet.css";
+//Add dependencies to use the material UI
+function App() {
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState(["worldwide"]);
+  const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
+  const [casesType, setCasesType] = useState("cases");
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
+  const [mapCountries, setMapCountries] = useState([]);
 
-import './App.css';
+  //useEffect is used to run the piece of code based on a given condition
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
