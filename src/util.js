@@ -1,3 +1,25 @@
+import { Circle, Popup } from "react-leaflet";
+import numeral from "numeral";
+const casesTypeColors = {
+  cases: {
+    hex: "#007FFF",
+    rgb: "rgb(0, 127, 255)",
+    half_op: "rgba(0, 127, 255, 0.5)",
+    multiplier: 300,
+  },
+  recovered: {
+    hex: "#7dd71d",
+    rgb: "rgb(125, 215, 29)",
+    half_op: "rgba(125, 215, 29, 0.5)",
+    multiplier: 400,
+  },
+  deaths: {
+    hex: "#fb4443",
+    rgb: "rgb(251, 68, 67)",
+    half_op: "rgba(251, 68, 67, 0.5)",
+    multiplier: 800,
+  },
+};
 export const sortData = (data) => {
   const sortedData = [...data] ;
   sortedData.sort((a, b) => {
